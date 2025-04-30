@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BookMatch - Find your next great read with personalized book recommendations based on your preferences">
+    <title>BookMatch - Personalized Book Recommendations</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <header role="banner">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="logo">BookMatch</div>
+            <div class="nav-links">
+                <a href="#" class="active" aria-current="page">Home</a>
+                <a href="#" id="wishlistBtn" aria-label="View your wishlist">My Wishlist</a>
+                <a href="#" id="profileBtn" aria-label="View your profile">Profile</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main" role="main">
+        <section class="hero" aria-labelledby="hero-title">
+            <h1 id="hero-title">Find Your Next Great Read</h1>
+            <p>Tell us your preferences, and we'll match you with the perfect books.</p>
+        </section>
+
+        <section class="preferences-form" aria-labelledby="preferences-title">
+            <h2 id="preferences-title">Your Reading Preferences</h2>
+            <form id="bookPreferencesForm" aria-label="Book preferences form">
+                <div class="form-group">
+                    <label for="genre">Preferred Genre:</label>
+                    <select id="genre" name="genre" required>
+                        <option value="">Select a genre</option>
+                        <option value="fiction">Fiction</option>
+                        <option value="non-fiction">Non-Fiction</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="mystery">Mystery</option>
+                        <option value="romance">Romance</option>
+                        <option value="sci-fi">Science Fiction</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="priceRange">Price Range:</label>
+                    <div class="price-inputs" role="group" aria-label="Price range inputs">
+                        <input type="number" id="minPrice" name="minPrice" min="0" placeholder="Min" required aria-label="Minimum price">
+                        <span aria-hidden="true">to</span>
+                        <input type="number" id="maxPrice" name="maxPrice" min="0" placeholder="Max" required aria-label="Maximum price">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="format">Book Format:</label>
+                    <select id="format" name="format">
+                        <option value="all">All Formats</option>
+                        <option value="hardcover">Hardcover</option>
+                        <option value="paperback">Paperback</option>
+                        <option value="ebook">E-Book</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="language">Language:</label>
+                    <select id="language" name="language">
+                        <option value="english">English</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="french">French</option>
+                        <option value="german">German</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="publicationYear">Publication Year:</label>
+                    <select id="publicationYear" name="publicationYear">
+                        <option value="all">All Years</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="older">2021 and older</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">Find Books</button>
+            </form>
+        </section>
+
+        <section class="recommendations hidden" id="recommendationsSection" aria-labelledby="recommendations-title">
+            <h2 id="recommendations-title">Recommended Books</h2>
+            <div class="books-grid" id="booksGrid" role="list"></div>
+        </section>
+
+        <section class="wishlist-section hidden" id="wishlistSection" aria-labelledby="wishlist-title">
+            <h2 id="wishlist-title">My Wishlist</h2>
+            <div class="wishlist-grid" id="wishlistGrid" role="list"></div>
+        </section>
+
+        <section class="profile-section hidden" id="profileSection" aria-labelledby="profile-title">
+            <div class="profile-header">
+                <div class="profile-avatar" aria-hidden="true">U</div>
+                <div class="profile-info">
+                    <h2 id="profile-title">User Profile</h2>
+                    <p>Member since April 2025</p>
+                </div>
+            </div>
+
+            <div class="profile-stats" role="group" aria-label="Reading statistics">
+                <div class="stat-card">
+                    <h3>12</h3>
+                    <p>Books in Wishlist</p>
+                </div>
+                <div class="stat-card">
+                    <h3>5</h3>
+                    <p>Currently Reading</p>
+                </div>
+                <div class="stat-card">
+                    <h3>28</h3>
+                    <p>Books Read</p>
+                </div>
+            </div>
+
+            <div class="reading-preferences">
+                <h3>Reading Preferences</h3>
+                <div class="preference-tags">
+                    <span class="preference-tag">Fantasy</span>
+                    <span class="preference-tag">Science Fiction</span>
+                    <span class="preference-tag">Mystery</span>
+                    <span class="preference-tag">Non-Fiction</span>
+                </div>
+            </div>
+
+            <div class="reading-history">
+                <h3>Recent Activity</h3>
+                <ul class="history-list" role="list">
+                    <li class="history-item">
+                        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3" alt="Book cover">
+                        <div class="history-item-info">
+                            <h4>The Midnight Library</h4>
+                            <p>Added to wishlist • 2 days ago</p>
+                        </div>
+                    </li>
+                    <li class="history-item">
+                        <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3" alt="Book cover">
+                        <div class="history-item-info">
+                            <h4>Atomic Habits</h4>
+                            <p>Currently reading • Started 1 week ago</p>
+                        </div>
+                    </li>
+                    <li class="history-item">
+                        <img src="https://images.unsplash.com/photo-1518744713037-f790d943a679?ixlib=rb-4.0.3" alt="Book cover">
+                        <div class="history-item-info">
+                            <h4>The Way of Kings</h4>
+                            <p>Finished reading • 2 weeks ago</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="edit-profile-btn">Edit Profile</button>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2025 BookMatch. All rights reserved.</p>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
